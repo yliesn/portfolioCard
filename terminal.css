@@ -1,5 +1,13 @@
 /* terminal.css
    Console noir/vert, glassmorphism, responsive, effet de frappe */
+/* Ajout des variables CSS pour le thème du terminal */
+:root {
+    --terminal-bg: #121618eb;
+    --terminal-accent: #00ff41;
+    --terminal-text: #e0e0e0;
+    --terminal-border: #444a;
+    --terminal-shadow: #222a;
+}
 #web-terminal-overlay {
     position: fixed;
     inset: 0;
@@ -14,10 +22,10 @@
     max-width: 98vw;
     width: 650px;
     max-height: 90vh;
-    background: rgba(18, 22, 24, 0.92);
+    background: var(--terminal-bg);
     border-radius: 18px;
-    box-shadow: 0 8px 32px 0 #222a;
-    border: 1.5px solid #444a;
+    box-shadow: 0 8px 32px 0 var(--terminal-shadow);
+    border: 1.5px solid var(--terminal-border);
     backdrop-filter: blur(10px) saturate(1.1);
     display: flex;
     flex-direction: column;
@@ -34,7 +42,7 @@
     justify-content: space-between;
     padding: 0.7em 1.2em 0.3em 1.2em;
     background: transparent;
-    color: #e0e0e0;
+    color: var(--terminal-text);
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.1em;
     user-select: none;
@@ -51,21 +59,21 @@
     transition: color 0.2s;
 }
 .web-terminal-close:hover {
-    color: #00ff41;
+    color: var(--terminal-accent);
 }
 .web-terminal-console {
     flex: 1 1 auto;
     background: transparent;
-    color: #e0e0e0;
+    color: var(--terminal-text);
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.15em;
     padding: 1.1em 1.2em 0.5em 1.2em;
     overflow-y: auto;
     white-space: pre-wrap;
     word-break: break-word;
-    text-shadow: 0 0 8px #222a;
+    text-shadow: 0 0 8px var(--terminal-shadow);
     scrollbar-width: thin;
-    scrollbar-color: #444 #181818;
+    scrollbar-color: var(--terminal-border) #181818;
 }
 .web-terminal-line {
     margin-bottom: 0.18em;
@@ -80,7 +88,7 @@
     border-top: 1px solid #222a;
 }
 .web-terminal-prompt {
-    color: #00ff41;
+    color: var(--terminal-accent);
     font-family: 'Fira Mono', Consolas, monospace;
     margin-right: 0.5em;
     user-select: none;
@@ -89,12 +97,12 @@
     background: transparent;
     border: none;
     outline: none;
-    color: #e0e0e0;
+    color: var(--terminal-text);
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.15em;
     flex: 1 1 auto;
-    caret-color: #00ff41;
-    text-shadow: 0 0 8px #222a;
+    caret-color: var(--terminal-accent);
+    text-shadow: 0 0 8px var(--terminal-shadow);
 }
 .web-terminal-input:focus {
     color: #fff;
@@ -108,14 +116,14 @@
     right: 2vw;
     bottom: 2vh;
     z-index: 10000;
-    background: rgba(18,22,24,0.92);
-    border: 1.5px solid #444a;
+    background: var(--terminal-bg);
+    border: 1.5px solid var(--terminal-border);
     border-radius: 50%;
-    color: #00ff41;
+    color: var(--terminal-accent);
     font-size: 1.7em;
     width: 2.5em;
     height: 2.5em;
-    box-shadow: 0 2px 12px #222a;
+    box-shadow: 0 2px 12px var(--terminal-shadow);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -131,15 +139,15 @@
     width: 100%;
     margin-bottom: 1.1em;
     padding: 0.8em 0;
-    background: linear-gradient(90deg, rgba(18,22,24,0.96) 60%, #00ff4130 100%);
-    border: 2px solid #444a;
+    background: linear-gradient(90deg, var(--terminal-bg) 60%, #00ff4130 100%);
+    border: 2px solid var(--terminal-border);
     border-radius: 14px;
-    color: #e0e0e0;
+    color: var(--terminal-text);
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.13em;
     font-weight: bold;
     letter-spacing: 0.06em;
-    box-shadow: 0 4px 18px #222a, 0 1.5px 0 #222a inset;
+    box-shadow: 0 4px 18px var(--terminal-shadow), 0 1.5px 0 var(--terminal-shadow) inset;
     cursor: pointer;
     transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s;
     text-shadow: 0 0 8px #222a, 0 0 2px #111;
@@ -148,14 +156,14 @@
     overflow: hidden;
 }
 .open-terminal-btn:hover, .open-terminal-btn:focus {
-    background: linear-gradient(90deg, #00ff4130 0%, rgba(18,22,24,0.98) 100%);
-    color: #00ff41;
-    border-color: #00ff41;
-    box-shadow: 0 6px 24px #00ff41a0, 0 2px 0 #00ff41 inset;
+    background: linear-gradient(90deg, #00ff4130 0%, var(--terminal-bg) 100%);
+    color: var(--terminal-accent);
+    border-color: var(--terminal-accent);
+    box-shadow: 0 6px 24px #00ff41a0, 0 2px 0 var(--terminal-accent) inset;
 }
 .open-terminal-btn:active {
     background: #00ff4130;
-    color: #00ff41;
+    color: var(--terminal-accent);
     border-color: #00ff41cc;
 }
 @media (max-width: 800px) {

@@ -314,6 +314,50 @@ class WebTerminal {
                     this.printLine('Personne n\'est vraiment bloqué ici ! 🚪', false);
                 }, 1000);
             },
+            theme: (args) => {
+                const themes = ['matrix', 'cyberpunk', 'retro', 'minimal', 'base'];
+                if (!args[0]) {
+                    this.printLine(`Thèmes disponibles: ${themes.join(', ')}`, false);
+                    return;
+                }
+                if (themes.includes(args[0])) {
+                    this.printLine(`Thème changé vers: ${args[0]}`, false);
+                    // Changement dynamique des couleurs principales du terminal via CSS variables
+                    if (args[0] === 'cyberpunk') {
+                        document.documentElement.style.setProperty('--terminal-accent', '#ff00ff');
+                        document.documentElement.style.setProperty('--terminal-bg', '#0a0a0f');
+                        document.documentElement.style.setProperty('--terminal-text', '#baffc9');
+                        document.documentElement.style.setProperty('--terminal-border', '#ff00ff');
+                        document.documentElement.style.setProperty('--terminal-shadow', '#ff00ff44');
+                    } else if (args[0] === 'matrix') {
+                        document.documentElement.style.setProperty('--terminal-accent', '#00ff41');
+                        document.documentElement.style.setProperty('--terminal-bg', '#101a10');
+                        document.documentElement.style.setProperty('--terminal-text', '#baffc9');
+                        document.documentElement.style.setProperty('--terminal-border', '#00ff41');
+                        document.documentElement.style.setProperty('--terminal-shadow', '#00ff4144');
+                    } else if (args[0] === 'retro') {
+                        document.documentElement.style.setProperty('--terminal-accent', '#ffd700');
+                        document.documentElement.style.setProperty('--terminal-bg', '#181818');
+                        document.documentElement.style.setProperty('--terminal-text', '#fffbe6');
+                        document.documentElement.style.setProperty('--terminal-border', '#ffd700');
+                        document.documentElement.style.setProperty('--terminal-shadow', '#ffd70044');
+                    } else if (args[0] === 'minimal') {
+                        document.documentElement.style.setProperty('--terminal-accent', '#888');
+                        document.documentElement.style.setProperty('--terminal-bg', '#181c20');
+                        document.documentElement.style.setProperty('--terminal-text', '#e0e0e0');
+                        document.documentElement.style.setProperty('--terminal-border', '#444a');
+                        document.documentElement.style.setProperty('--terminal-shadow', '#222a');
+                    } else if (args[0] === 'base') {
+                        document.documentElement.style.setProperty('--terminal-accent', '#00ff41');
+                        document.documentElement.style.setProperty('--terminal-bg', '#121618eb');
+                        document.documentElement.style.setProperty('--terminal-text', '#e0e0e0');
+                        document.documentElement.style.setProperty('--terminal-border', '#444a');
+                        document.documentElement.style.setProperty('--terminal-shadow', '#222a');
+                    }
+                } else {
+                    this.printLine('Thème non reconnu', false);
+                }
+            },
         };
     }
 }
