@@ -2,7 +2,9 @@
 let desc;
 let circle;
 let picture;
+let mapIframe;
 let picOpen = false;
+let mapOpen = false;
 const sentence = [
     "[A young french developer]", 
     "[HTML, CSS, JS, PHP]",
@@ -19,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
     desc = document.querySelector('#desc');
     circle = document.querySelector('.circle');
     picture = document.querySelector('.picture');
-    if (!desc || !circle) return; // Checking the existence of elements
+    mapIframe = document.querySelector('.map-iframe');
+    if (!desc || !circle) return;
 
     // Initializing Events
     initEvents();
@@ -33,24 +36,39 @@ document.addEventListener("DOMContentLoaded", function() {
 // Event Initialization
 function initEvents() {
     const url = document.querySelector('.url');
+    const locationLink = document.querySelector('.location-link');
     const checkbox = document.querySelector('#checkbox');
+    
+    // Picture events
     if (url) {
-        url.addEventListener("mouseover", handleMouseOver);
-        url.addEventListener("mouseout", handleMouseOut);
+        url.addEventListener("mouseover", handlePictureMouseOver);
+        url.addEventListener("mouseout", handlePictureMouseOut);
         url.addEventListener('click', (event) => {
             event.stopPropagation();
-            hide('on');
+            hidePicture('on');
         });
     }
+    
+    // Map events
+    if (locationLink) {
+        locationLink.addEventListener("mouseover", handleMapMouseOver);
+        locationLink.addEventListener("mouseout", handleMapMouseOut);
+        locationLink.addEventListener('click', (event) => {
+            event.stopPropagation();
+            hideMap('on');
+        });
+    }
+    
     document.body.addEventListener('click', () => {
-        hide('out');
+        hidePicture('out');
+        hideMap('out');
     });
+    
     if (checkbox) {
         checkbox.addEventListener('click', handleCheckboxClick);
     }
     document.addEventListener('wheel', handleWheel);
     window.addEventListener('mousemove', moveCircle);
-
 
     // Display current age
     const birthday = new Date("09/19/2004");   
@@ -58,18 +76,15 @@ function initEvents() {
     const age_dt = new Date(month_diff);   
     const year = age_dt.getUTCFullYear();  
     const age = Math.abs(year - 1970);
-
     document.querySelector('#age').textContent = age;
-
-
-    // Display discord username
+        // Display discord username
     document.querySelector('#discord').addEventListener('click',()=>{
         alert('Username : cyri__');
     })
 }
 
 // Hide picture on click
-function hide(statut) {
+function hidePicture(statut) {
     if (statut == "on") {
         if (!picOpen) {
             picture.style.opacity = "100%";
@@ -84,16 +99,44 @@ function hide(statut) {
     }
 }
 
+// Hide map on click
+function hideMap(statut) {
+    if (statut == "on") {
+        if (!mapOpen) {
+            mapIframe.classList.add("visible");
+            mapOpen = true;
+        } else {
+            mapIframe.classList.remove("visible");
+            mapOpen = false;
+        }
+    } else if (mapOpen) {
+        mapIframe.classList.remove("visible");
+        mapOpen = false;
+    }
+}
+
 // Handling mouseover event to display the profile picture
-function handleMouseOver() {
+function handlePictureMouseOver() {
     if (!picture || picOpen == true) return;
     picture.style.opacity = "100%";
 }
 
 // Handling mouseout event to hide the profile picture
-function handleMouseOut() {
+function handlePictureMouseOut() {
     if (!picture || picOpen == true) return;
     picture.style.opacity = "0%";
+}
+
+// Handling mouseover event to display the map
+function handleMapMouseOver() {
+    if (!mapIframe || mapOpen == true) return;
+    mapIframe.classList.add("visible");
+}
+
+// Handling mouseout event to hide the map
+function handleMapMouseOut() {
+    if (!mapIframe || mapOpen == true) return;
+    mapIframe.classList.remove("visible");
 }
 
 // Handling click event on checkbox to show or hide the animated cursor

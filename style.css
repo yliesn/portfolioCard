@@ -487,3 +487,57 @@ label {
     margin: 0 14px;
   }
 }
+
+/* Styles pour la carte */
+.map-iframe {
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 0.75rem rgb(255, 255, 255));
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    right: 0;
+    top: 10%;
+    transform: translateY(-50%);
+    transition: opacity .2s ease-in, pointer-events 0s linear .2s;
+    z-index: 10;
+}
+
+.map-iframe.visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: opacity .2s ease-in, pointer-events 0s;
+}
+
+/* Style pour la localisation cliquable */
+/* .location-link {
+    cursor: pointer;
+    color: #f1fa8c;
+} */
+
+.location-link:hover {
+    text-decoration: underline;
+}
+
+/* Media queries pour la carte */
+@media (max-width: 1025px) {
+    .map-iframe {
+        right: 50%;
+        top: -320px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 350px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 535px) {
+    .map-iframe {
+        width: 280px;
+        height: 200px;
+        top: -220px;
+    }
+            }
