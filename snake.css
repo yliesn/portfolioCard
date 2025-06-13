@@ -4,13 +4,16 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: repeating-linear-gradient(135deg, #181818 0 8px, #222 8px 16px);
+  /* background: repeating-linear-gradient(135deg, #181818 0 8px, #222 8px 16px); */
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s cubic-bezier(.4,2,.6,1);
+  background: linear-gradient(120deg, #181818cc 60%, #2228 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 #snake-overlay.visible {
   opacity: 1;
