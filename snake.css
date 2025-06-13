@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Snake Game - Style rétro pixel art */
+#snake-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: repeating-linear-gradient(135deg, #181818 0 8px, #222 8px 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(.4,2,.6,1);
+}
+#snake-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.snake-glass {
+  background: #181818cc;
+  border-radius: 0;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 8px #00e0ff, 0 0 0 12px #ff00c8;
+  border: 4px solid #fff;
+  padding: 1vw 1vw 0.5vw 1vw;
+  min-width: 320px;
+  max-width: 96vw;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: snake-retro-in 0.5s cubic-bezier(.4,2,.6,1);
+}
+@keyframes snake-retro-in {
+  0% { transform: scale(0.7) translateY(-60vh); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+#snake-canvas {
+  background: #111;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 4px #00e0ff, 0 0 0 8px #ff00c8;
+  margin-bottom: 1.2em;
+  display: block;
+  width: 60vw;
+  max-width: 420px;
+  height: 60vw;
+  max-height: 420px;
+  image-rendering: pixelated;
+  outline: none;
+}
+.snake-ui {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.5em;
+  font-family: 'Press Start 2P', 'Fira Mono', 'Consolas', monospace;
+}
+.snake-score {
+  color: #fff200;
+  font-size: 1.1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #fff200a0;
+}
+.snake-msg {
+  color: #ff00c8;
+  font-size: 1.1em;
+  font-family: 'Press Start 2P', monospace;
+  margin: 0 1em;
+  min-width: 80px;
+  text-align: center;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+.snake-btn {
+  background: #111;
+  border: 2.5px solid #fff200;
+  color: #fff200;
+  border-radius: 0;
+  font-size: 1.2em;
+  font-family: 'Press Start 2P', monospace;
+  padding: 0.3em 0.8em;
+  margin: 0 0.2em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 #fff20030;
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+  text-shadow: 1px 1px 0 #000, 2px 2px 0 #ff00c8;
+}
+.snake-btn:active {
+  background: #fff200;
+  color: #111;
+  transform: scale(0.96);
+}
+.snake-pause {
+  font-size: 1.3em;
+  margin-left: auto;
+}
+.snake-close {
+  font-size: 1.3em;
+  margin-left: 0.5em;
+  color: #ff00c8;
+  border-color: #ff00c8;
+  background: #111;
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #00e0ff;
+}
+.snake-close:active {
+  background: #ff00c8;
+  color: #fff;
+}
+.snake-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em 0 0.2em 0;
+  gap: 0.3em;
+}
+.snake-controls button {
+  min-width: 2.2em;
+  min-height: 2.2em;
+  font-size: 1.2em;
+}
+.snake-instructions {
+  color: #fff200;
+  font-size: 0.98em;
+  font-family: 'Press Start 2P', monospace;
+  margin-top: 0.7em;
+  text-align: center;
+  opacity: 0.92;
+  background: #111b;
+  border: 2px solid #fff200;
+  border-radius: 0;
+  padding: 0.3em 0.7em;
+  box-shadow: 0 0 8px #fff20030;
+}
+.snake-countdown {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 3.2em;
+  color: #fff200;
+  text-shadow: 0 0 12px #ff00c8, 0 0 32px #00e0ff;
+  background: #111b;
+  border: 2px solid #fff200;
+  border-radius: 0;
+  padding: 0.2em 0.7em;
+  margin-top: 1em;
+  letter-spacing: 0.1em;
+  display: none;
+}
+@media (max-width: 600px) {
+  .snake-glass {
+    min-width: 0;
+    padding: 2vw 1vw 1vw 1vw;
+  }
+  #snake-canvas {
+    width: 92vw;
+    height: 92vw;
+    max-width: 98vw;
+    max-height: 98vw;
+  }
+  .snake-ui, .snake-controls {
+    font-size: 0.95em;
+  }
+}
