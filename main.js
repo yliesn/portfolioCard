@@ -33,6 +33,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 2000);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const openTerminalBtn = document.getElementById('open-terminal-btn');
+    if (openTerminalBtn) {
+        openTerminalBtn.addEventListener('click', () => {
+            if (window.webTerminal) {
+                window.webTerminal.show();
+            } else {
+                // Si le terminal n'est pas encore chargé, attendre qu'il le soit
+                const interval = setInterval(() => {
+                    if (window.webTerminal) {
+                        window.webTerminal.show();
+                        clearInterval(interval);
+                    }
+                }, 100);
+            }
+        });
+    }
+});
+
 // Event Initialization
 function initEvents() {
     const url = document.querySelector('.url');
