@@ -14,11 +14,11 @@
     max-width: 98vw;
     width: 650px;
     max-height: 90vh;
-    background: rgba(20, 30, 20, 0.85);
+    background: rgba(18, 22, 24, 0.92);
     border-radius: 18px;
-    box-shadow: 0 8px 32px 0 #00ff4130;
-    border: 1.5px solid #00ff4150;
-    backdrop-filter: blur(8px) saturate(1.2);
+    box-shadow: 0 8px 32px 0 #222a;
+    border: 1.5px solid #444a;
+    backdrop-filter: blur(10px) saturate(1.1);
     display: flex;
     flex-direction: column;
     opacity: 0;
@@ -34,7 +34,7 @@
     justify-content: space-between;
     padding: 0.7em 1.2em 0.3em 1.2em;
     background: transparent;
-    color: #00ff41;
+    color: #e0e0e0;
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.1em;
     user-select: none;
@@ -45,27 +45,27 @@
 .web-terminal-close {
     background: none;
     border: none;
-    color: #00ff41;
+    color: #888;
     font-size: 1.2em;
     cursor: pointer;
     transition: color 0.2s;
 }
 .web-terminal-close:hover {
-    color: #fff;
+    color: #00ff41;
 }
 .web-terminal-console {
     flex: 1 1 auto;
     background: transparent;
-    color: #00ff41;
+    color: #e0e0e0;
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.15em;
     padding: 1.1em 1.2em 0.5em 1.2em;
     overflow-y: auto;
     white-space: pre-wrap;
     word-break: break-word;
-    text-shadow: 0 0 8px #00ff41a0;
+    text-shadow: 0 0 8px #222a;
     scrollbar-width: thin;
-    scrollbar-color: #00ff41 #222;
+    scrollbar-color: #444 #181818;
 }
 .web-terminal-line {
     margin-bottom: 0.18em;
@@ -77,7 +77,7 @@
     align-items: center;
     padding: 0.7em 1.2em 1.1em 1.2em;
     background: transparent;
-    border-top: 1px solid #00ff4120;
+    border-top: 1px solid #222a;
 }
 .web-terminal-prompt {
     color: #00ff41;
@@ -89,29 +89,33 @@
     background: transparent;
     border: none;
     outline: none;
-    color: #00ff41;
+    color: #e0e0e0;
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.15em;
     flex: 1 1 auto;
     caret-color: #00ff41;
-    text-shadow: 0 0 8px #00ff41a0;
+    text-shadow: 0 0 8px #222a;
+}
+.web-terminal-input:focus {
+    color: #fff;
+    background: rgba(0,255,65,0.04);
 }
 .web-terminal-input::-webkit-input-placeholder {
-    color: #00ff41a0;
+    color: #888a;
 }
 .web-terminal-toggle {
     position: fixed;
     right: 2vw;
     bottom: 2vh;
     z-index: 10000;
-    background: rgba(20,30,20,0.85);
-    border: 1.5px solid #00ff4150;
+    background: rgba(18,22,24,0.92);
+    border: 1.5px solid #444a;
     border-radius: 50%;
     color: #00ff41;
     font-size: 1.7em;
     width: 2.5em;
     height: 2.5em;
-    box-shadow: 0 2px 12px #00ff4130;
+    box-shadow: 0 2px 12px #222a;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -127,25 +131,25 @@
     width: 100%;
     margin-bottom: 1.1em;
     padding: 0.8em 0;
-    background: linear-gradient(90deg, rgba(20,30,20,0.92) 60%, #00ff4130 100%);
-    border: 2px solid #00ff41cc;
+    background: linear-gradient(90deg, rgba(18,22,24,0.96) 60%, #00ff4130 100%);
+    border: 2px solid #444a;
     border-radius: 14px;
-    color: #00ff41;
+    color: #e0e0e0;
     font-family: 'Fira Mono', Consolas, monospace;
     font-size: 1.13em;
     font-weight: bold;
     letter-spacing: 0.06em;
-    box-shadow: 0 4px 18px #00ff4130, 0 1.5px 0 #00ff41a0 inset;
+    box-shadow: 0 4px 18px #222a, 0 1.5px 0 #222a inset;
     cursor: pointer;
     transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s;
-    text-shadow: 0 0 8px #00ff41a0, 0 0 2px #111;
+    text-shadow: 0 0 8px #222a, 0 0 2px #111;
     outline: none;
     position: relative;
     overflow: hidden;
 }
 .open-terminal-btn:hover, .open-terminal-btn:focus {
-    background: linear-gradient(90deg, #00ff4130 0%, rgba(20,30,20,0.98) 100%);
-    color: #fff;
+    background: linear-gradient(90deg, #00ff4130 0%, rgba(18,22,24,0.98) 100%);
+    color: #00ff41;
     border-color: #00ff41;
     box-shadow: 0 6px 24px #00ff41a0, 0 2px 0 #00ff41 inset;
 }
@@ -160,12 +164,5 @@
         min-width: 0;
         max-width: 100vw;
         border-radius: 0;
-    }
-    .web-terminal-toggle {
-        right: 1vw;
-        bottom: 1vh;
-        font-size: 1.3em;
-        width: 2em;
-        height: 2em;
     }
 }

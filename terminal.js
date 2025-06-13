@@ -246,18 +246,22 @@ class WebTerminal {
             github: (args) => {
                 this.printLine('Accédez à mon GitHub :', false);
                 this.printLine('https://github.com/yliesn', false);
+                window.open('https://github.com/yliesn', '_blank');
             },
             linkedin: (args) => {
                 this.printLine('Accédez à mon LinkedIn :', false);
                 this.printLine('https://linkedin.com/in/yliès-nejara', false);
+                window.open('https://linkedin.com/in/yliès-nejara', '_blank');
             },
             discord: (args) => {
                 this.printLine('Rejoignez mon serveur Discord :', false);
                 this.printLine('https://discord.gg/monserveur', false);
+                window.open('https://discord.gg/monserveur', '_blank');
             },
             email: (args) => {
                 this.printLine('Mon adresse email :', false);
                 this.printLine('yliès.nejara@gmail.com', false);
+                window.open('mailto:yliès.nejara@gmail.com', '_blank');
             },
             random: (args) => {
                 const quotes = [
