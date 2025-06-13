@@ -550,7 +550,7 @@ label {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(30,34,40,0.55);
+  background: rgba(54,57,63,0.75); /* Discord dark background */
   backdrop-filter: blur(3px);
   display: none;
   align-items: center;
@@ -565,7 +565,7 @@ label {
   opacity: 1;
 }
 .modal-content {
-  background: rgba(34, 34, 40, 0.98);
+  background: #23272A; /* Discord dark */
   color: #fff;
   padding: 2.2rem 2.7rem 1.7rem 2.7rem;
   border-radius: 18px;
@@ -575,31 +575,44 @@ label {
   box-shadow: 0 12px 40px 0 rgba(0,0,0,0.45), 0 1.5px 8px 0 rgba(80,80,120,0.12);
   text-align: center;
   animation: modalPop 0.25s cubic-bezier(.4,2,.6,1) both;
-  border: 1.5px solid #444;
+  border: 2px solid #5865F2; /* Discord blurple */
 }
 .modal-content h2 {
   font-size: 2.1rem;
   margin-bottom: 0.7rem;
   letter-spacing: 1px;
-  color: #8be9fd;
+  color: #5865F2; /* Discord blurple */
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
 }
 .modal-content p {
   font-size: 1.25rem;
-  color: #f1fa8c;
+  color: #fff;
   margin-bottom: 0;
+  font-family: 'Anonymous Pro', 'Consolas', monospace;
+  background: #313338;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  display: inline-block;
+  margin-top: 0.5em;
+  letter-spacing: 1px;
+}
+.modal-content b {
+  color: #5865F2;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 .close-modal {
   position: absolute;
   top: 10px; right: 15px;
   background: none;
   border: none;
-  color: #8be9fd;
+  color: #5865F2;
   font-size: 2.2rem;
   cursor: pointer;
   transition: color 0.2s, transform 0.2s;
 }
 .close-modal:hover {
-  color: #ff79c6;
+  color: #57F287; /* Discord green accent */
   transform: scale(1.18) rotate(12deg);
 }
 @keyframes modalPop {
