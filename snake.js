@@ -354,3 +354,13 @@ class SnakeGame {
         document.removeEventListener('visibilitychange', this.visibilityHandler);
     }
 }
+
+// Bouton mobile pour Snake
+window.addEventListener('DOMContentLoaded',()=>{
+    const btn = document.getElementById('snake-mobile-btn');
+    if(btn) {
+        btn.addEventListener('click',()=>{
+            if (!snakeGame && !document.getElementById('snake-overlay')) showSnakeGame();
+        });
+    }
+});

@@ -145,6 +145,20 @@
   letter-spacing: 0.1em;
   display: none;
 }
+#snake-mobile-btn {
+  display: none;
+}
+@media (max-width: 700px) {
+  #snake-mobile-btn {
+    display: block !important;
+    animation: snake-retro-in 0.6s cubic-bezier(.4,2,.6,1);
+  }
+}
+#snake-mobile-btn:active {
+  background: #fff200;
+  color: #181818;
+  border-color: #ff00c8;
+}
 @media (max-width: 600px) {
   .snake-glass {
     min-width: 0;
