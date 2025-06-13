@@ -96,6 +96,21 @@ function initEvents() {
             }
         }
     });
+    // Gestion bouton copier Discord
+    const copyBtn = document.querySelector('.copy-discord-btn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const username = document.getElementById('discord-username').textContent;
+            navigator.clipboard.writeText(username).then(() => {
+                copyBtn.textContent = 'Copié !';
+                copyBtn.disabled = true;
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copier';
+                    copyBtn.disabled = false;
+                }, 1200);
+            });
+        });
+    }
 }
 
 // Hide picture on click
