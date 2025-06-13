@@ -356,11 +356,11 @@ class SnakeGame {
 }
 
 // Bouton mobile pour Snake
-window.addEventListener('DOMContentLoaded',()=>{
-    const btn = document.getElementById('snake-mobile-btn');
-    if(btn) {
-        btn.addEventListener('click',()=>{
-            if (!snakeGame && !document.getElementById('snake-overlay')) showSnakeGame();
-        });
-    }
-});
+// window.addEventListener('DOMContentLoaded',()=>{
+//     const btn = document.getElementById('snake-mobile-btn');
+//     if(btn) {
+//         btn.addEventListener('click',()=>{
+//             if (!snakeGame && !document.getElementById('snake-overlay')) showSnakeGame();
+//         });
+//     }
+// });
