@@ -8,7 +8,7 @@ let mapOpen = false;
 const sentence = [
     "[A young french developer]", 
     "[HTML, CSS, JS, PHP]",
-    "[Vue, Nuxt, Tailwind]",
+    "[C, C++, Java]",
     "[React, Laravel]"
 ];
 let indexSentence = 0;

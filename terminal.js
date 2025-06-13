@@ -197,7 +197,7 @@ class WebTerminal {
                         frontend: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Vue'],
                         backend: ['Node.js', 'PHP', 'Laravel'],
                         tools: ['Git', 'Figma', 'VSCode'],
-                        learning: ['TypeScript', 'Docker', 'AWS']
+                        learning: ['TypeScript', 'Docker']
                     }, null, 2), false);
                 } else if (args[0] === '--verbose') {
                     this.printLine('=== COMPÉTENCES DÉTAILLÉES ===', false);
