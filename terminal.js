@@ -185,6 +185,11 @@ class WebTerminal {
                 this.printLine('random      : Affiche une citation inspirante', false);
                 this.printLine('banner      : Affiche une bannière', false);
                 this.printLine('echo        : Répète ce que vous tapez', false);
+                this.printLine('snake       : Lancer le jeu Snake', false);
+                this.printLine('tetris      : Lancer le jeu Tetris', false);
+                // this.printLine('coffee      : Prendre un café virtuel', false);
+                // this.printLine('vim         : Ouvre un faux Vim', false);
+                this.printLine('theme       : Change le thème du terminal (ex: theme matrix)', false);
                 this.printLine('---', false);
                 this.printLine('Des easter eggs sont cachés dans le terminal... sauras-tu les trouver ?', false);
             },
@@ -356,6 +361,15 @@ class WebTerminal {
                     }
                 } else {
                     this.printLine('Thème non reconnu', false);
+                }
+            },
+            // Easter egg tetris
+            tetris: (args) => {
+                if (typeof window.tetrisShow === 'function') {
+                    this.printLine('Lancement du jeu Tetris...', false);
+                    window.tetrisShow();
+                } else {
+                    this.printLine('Le jeu Tetris n\'est pas disponible.', false);
                 }
             },
         };

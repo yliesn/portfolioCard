@@ -6,6 +6,7 @@
         <title>Ylies - Web Developer</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="terminal.css">
+        <link rel="stylesheet" href="tetris.css">
         <link rel="shortcut icon" href="public/favicon.png" type="image/x-icon">
     </head>
     <body>
@@ -94,6 +95,7 @@
         <!-- <button id="snake-mobile-btn" aria-label="Jouer à Snake" style="display:none;position:fixed;bottom:22px;right:22px;z-index:10001;background:#181818cc;border:4px solid #fff;border-radius:16px;padding:0.7em 1.2em;font-family:'Press Start 2P',monospace;font-size:1.1em;color:#fff200;box-shadow:0 0 0 4px #00e0ff,0 0 0 8px #ff00c8;letter-spacing:1px;">SNAKE</button> -->
         <script src="main.js" type="module"></script>
         <script src="terminal.js"></script>
+        <script src="tetris.js"></script>
         <link rel="stylesheet" href="snake.css">
         <script src="snake.js"></script>
         <!-- Modal Discord -->
@@ -103,6 +105,14 @@
             <h2>Mon Discord</h2>
             <p>Username : <b id="discord-username">yliesn</b></p>
             <button class="copy-discord-btn" style="margin-top:1.2em;">Copier</button>
+          </div>
+        </div>
+        <!-- Modal Tetris -->
+        <div id="tetris-modal" style="display:none;" tabindex="-1">
+          <div class="tetris-content">
+            <button class="close-tetris" onclick="tetrisClose()" aria-label="Fermer">&times;</button>
+            <canvas id="tetris-canvas" width="300" height="600"></canvas>
+            <div style="color:#fff;font-family:monospace;font-size:1.1em;margin-top:0.5em;">Flèches = jouer, Échap = quitter</div>
           </div>
         </div>
     </body>

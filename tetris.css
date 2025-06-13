@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@700&display=swap');
+#tetris-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: linear-gradient(120deg, #181818cc 60%, #2228 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+}
+#tetris-modal.visible {
+  display: flex;
+}
+.tetris-content {
+  background: #232323;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px 0 #000a;
+  border: 2.5px solid #888;
+  padding: 1.5vw 1.5vw 1vw 1.5vw;
+  min-width: 320px;
+  max-width: 98vw;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+#tetris-canvas {
+  background: #111;
+  border: 3px solid #888;
+  box-shadow: 0 2px 16px 0 #000a;
+  margin-bottom: 1.2em;
+  display: block;
+  width: 300px;
+  height: 600px;
+  image-rendering: pixelated;
+  outline: none;
+  border-radius: 6px;
+}
+.tetris-score {
+  color: #7fff00;
+  font-size: 1.2em;
+  font-family: 'Fira Mono', monospace;
+  margin-bottom: 0.7em;
+  letter-spacing: 2px;
+  text-shadow: 0 0 4px #7fff00a0;
+}
+.close-tetris {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 2.8rem;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  transition: color 0.2s, transform 0.2s;
+  font-family: 'Fira Mono', monospace;
+}
+.close-tetris:hover {
+  color: #7fff00;
+  transform: scale(1.18) rotate(12deg);
+}
+.tetris-instructions {
+  color: #aaa;
+  font-family: 'Fira Mono', monospace;
+  font-size: 0.95em;
+  margin-top: 0.5em;
+  text-align: center;
+}

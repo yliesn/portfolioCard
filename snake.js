@@ -343,11 +343,55 @@ class SnakeGame {
         this.msgEl.style.opacity = this.paused ? 1 : 0;
         this.pauseBtn.textContent = this.paused ? '▶' : '⏸';
     }
-    gameOver() {
+    async sendScoreToServer() {
+        try {
+            await fetch('save-snake-score.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    score: this.score,
+                    date: new Date().toISOString().slice(0, 10) // format AAAA-MM-JJ
+                })
+            });
+        } catch (e) {
+            // Optionnel : afficher une erreur ou ignorer
+            console.error('Erreur lors de l\'envoi du score', e);
+        }
+    }
+    async showScoresTable() {
+        // Récupère les scores depuis le serveur et affiche un tableau modal
+        try {
+            const res = await fetch('snake-scores.json?_=' + Date.now()); // cache-busting
+            if (!res.ok) throw new Error('Erreur de récupération');
+            const scores = await res.json();
+            // Tri décroissant par score
+            scores.sort((a, b) => b.score - a.score);
+            // Création du tableau HTML
+            let html = '<div class="snake-scores-modal" style="position:fixed;z-index:100000;top:0;left:0;width:100vw;height:100vh;background:#181818cc;display:flex;align-items:center;justify-content:center;">';
+            html += '<div style="background:#232323;padding:2em 2em 1.5em 2em;border-radius:14px;box-shadow:0 4px 32px #000a;min-width:320px;max-width:90vw;">';
+            html += "<h2 style='color:#7fff00;font-family:monospace;text-align:center;margin-bottom:1em;'>Scores Snake</h2>";
+            html += "<table style='width:100%;border-collapse:collapse;font-family:monospace;'>";
+            html += "<tr style='color:#fff200;font-size:1.1em;'><th>Date</th><th>Score</th></tr>";
+            for (const s of scores) {
+                html += "<tr><td style='padding:0.3em 1em;text-align:center;'>" + s.date + "</td><td style='padding:0.3em 1em;text-align:center;'>" + s.score + "</td></tr>";
+            }
+            html += "</table><button id='close-scores-btn' style='margin-top:1.5em;padding:0.5em 1.5em;font-size:1.1em;background:#7fff00;color:#232323;border:none;border-radius:6px;cursor:pointer;'>Fermer</button></div></div>";
+            const modal = document.createElement('div');
+            modal.innerHTML = html;
+            document.body.appendChild(modal);
+            document.getElementById('close-scores-btn').onclick = () => modal.remove();
+            // Fermer aussi si clic sur le fond
+            modal.onclick = e => { if (e.target === modal) modal.remove(); };
+        } catch (e) {
+            alert('Impossible de charger les scores.');
+        }
+    }
+    async gameOver() {
         this.running = false;
+        await this.sendScoreToServer();
         this.msgEl.textContent = this.score>this.highscore?"Nouveau record!" : ["Ouch!","Try again!","Snake over!"][Math.floor(Math.random()*3)];
         this.msgEl.style.opacity=1;
-        setTimeout(()=>closeSnakeGame(), 1800);
+        setTimeout(()=>this.showScoresTable(), 1200);
     }
     destroy() {
         window.removeEventListener('keydown', this.keyHandler);

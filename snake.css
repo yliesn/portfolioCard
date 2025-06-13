@@ -1,37 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@700&display=swap');
 /* Snake Game - Style rétro pixel art */
 #snake-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  /* background: repeating-linear-gradient(135deg, #181818 0 8px, #222 8px 16px); */
+  background: linear-gradient(120deg, #181818cc 60%, #2228 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s cubic-bezier(.4,2,.6,1);
-  background: linear-gradient(120deg, #181818cc 60%, #2228 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 #snake-overlay.visible {
   opacity: 1;
   pointer-events: all;
 }
 .snake-glass {
-  background: #181818cc;
-  border-radius: 0;
-  box-shadow: 0 0 0 4px #fff, 0 0 0 8px #00e0ff, 0 0 0 12px #ff00c8;
-  border: 4px solid #fff;
-  padding: 1vw 1vw 0.5vw 1vw;
+  background: #232323;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px 0 #000a;
+  border: 2.5px solid #888;
+  padding: 1.5vw 1.5vw 1vw 1.5vw;
   min-width: 320px;
-  max-width: 96vw;
+  max-width: 98vw;
   min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: snake-retro-in 0.5s cubic-bezier(.4,2,.6,1);
+  position: relative;
 }
 @keyframes snake-retro-in {
   0% { transform: scale(0.7) translateY(-60vh); opacity: 0; }
@@ -39,16 +38,15 @@
 }
 #snake-canvas {
   background: #111;
-  border: 4px solid #fff;
-  box-shadow: 0 0 0 4px #00e0ff, 0 0 0 8px #ff00c8;
+  border: 3px solid #888;
+  box-shadow: 0 2px 16px 0 #000a;
   margin-bottom: 1.2em;
   display: block;
-  width: 60vw;
-  max-width: 420px;
-  height: 60vw;
-  max-height: 420px;
+  width: 300px;
+  height: 300px;
   image-rendering: pixelated;
   outline: none;
+  border-radius: 6px;
 }
 .snake-ui {
   display: flex;
@@ -59,11 +57,12 @@
   font-family: 'Press Start 2P', 'Fira Mono', 'Consolas', monospace;
 }
 .snake-score {
-  color: #fff200;
-  font-size: 1.1em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px #fff200a0;
+  color: #7fff00;
+  font-size: 1.2em;
+  font-family: 'Fira Mono', monospace;
+  margin-bottom: 0.7em;
+  letter-spacing: 2px;
+  text-shadow: 0 0 4px #7fff00a0;
 }
 .snake-msg {
   color: #ff00c8;
@@ -76,22 +75,23 @@
   opacity: 0;
 }
 .snake-btn {
-  background: #111;
-  border: 2.5px solid #fff200;
-  color: #fff200;
-  border-radius: 0;
-  font-size: 1.2em;
-  font-family: 'Press Start 2P', monospace;
-  padding: 0.3em 0.8em;
+  background: #232323;
+  border: 2px solid #888;
+  color: #7fff00;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-family: 'Fira Mono', monospace;
+  padding: 0.3em 1.2em;
   margin: 0 0.2em;
   cursor: pointer;
-  box-shadow: 0 2px 8px 0 #fff20030;
-  transition: background 0.18s, color 0.18s, transform 0.15s;
-  text-shadow: 1px 1px 0 #000, 2px 2px 0 #ff00c8;
+  box-shadow: 0 2px 8px 0 #000a;
+  transition: background 0.18s, color 0.18s, transform 0.15s, border 0.18s;
+  text-shadow: 0 0 4px #7fff00a0;
 }
 .snake-btn:active {
-  background: #fff200;
-  color: #111;
+  background: #7fff00;
+  color: #232323;
+  border-color: #888;
   transform: scale(0.96);
 }
 .snake-pause {
@@ -99,16 +99,20 @@
   margin-left: auto;
 }
 .snake-close {
-  font-size: 1.3em;
-  margin-left: 0.5em;
-  color: #ff00c8;
-  border-color: #ff00c8;
-  background: #111;
-  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #00e0ff;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 2.8rem;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  transition: color 0.2s, transform 0.2s;
+  font-family: 'Fira Mono', monospace;
 }
-.snake-close:active {
-  background: #ff00c8;
-  color: #fff;
+.snake-close:hover {
+  color: #7fff00;
+  transform: scale(1.18) rotate(12deg);
 }
 .snake-controls {
   display: flex;
@@ -123,17 +127,11 @@
   font-size: 1.2em;
 }
 .snake-instructions {
-  color: #fff200;
-  font-size: 0.98em;
-  font-family: 'Press Start 2P', monospace;
-  margin-top: 0.7em;
+  color: #aaa;
+  font-family: 'Fira Mono', monospace;
+  font-size: 0.95em;
+  margin-top: 0.5em;
   text-align: center;
-  opacity: 0.92;
-  background: #111b;
-  border: 2px solid #fff200;
-  border-radius: 0;
-  padding: 0.3em 0.7em;
-  box-shadow: 0 0 8px #fff20030;
 }
 .snake-countdown {
   font-family: 'Press Start 2P', monospace;
