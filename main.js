@@ -78,9 +78,24 @@ function initEvents() {
     const age = Math.abs(year - 1970);
     document.querySelector('#age').textContent = age;
         // Display discord username
-    document.querySelector('#discord').addEventListener('click',()=>{
-        alert('Username : cyri__');
-    })
+    const discordBtn = document.querySelector('#discord');
+    if (discordBtn) {
+        discordBtn.addEventListener('click', () => {
+            const modal = document.getElementById('discord-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        });
+    }
+    // Gestion fermeture du modal Discord
+    document.addEventListener('click', (e) => {
+        const modal = document.getElementById('discord-modal');
+        if (modal && modal.style.display === 'flex') {
+            if (e.target.classList.contains('close-modal') || e.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    });
 }
 
 // Hide picture on click

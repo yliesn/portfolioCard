@@ -540,4 +540,82 @@ label {
         height: 200px;
         top: -220px;
     }
-            }
+}
+
+/* Styles du modal Discord */
+.modal-bg {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30,34,40,0.55);
+  backdrop-filter: blur(3px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+#discord-modal {
+  display: none;
+}
+#discord-modal[style*="display: flex"] {
+  display: flex !important;
+  opacity: 1;
+}
+.modal-content {
+  background: rgba(34, 34, 40, 0.98);
+  color: #fff;
+  padding: 2.2rem 2.7rem 1.7rem 2.7rem;
+  border-radius: 18px;
+  min-width: 250px;
+  max-width: 92vw;
+  position: relative;
+  box-shadow: 0 12px 40px 0 rgba(0,0,0,0.45), 0 1.5px 8px 0 rgba(80,80,120,0.12);
+  text-align: center;
+  animation: modalPop 0.25s cubic-bezier(.4,2,.6,1) both;
+  border: 1.5px solid #444;
+}
+.modal-content h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+  color: #8be9fd;
+}
+.modal-content p {
+  font-size: 1.25rem;
+  color: #f1fa8c;
+  margin-bottom: 0;
+}
+.close-modal {
+  position: absolute;
+  top: 10px; right: 15px;
+  background: none;
+  border: none;
+  color: #8be9fd;
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+.close-modal:hover {
+  color: #ff79c6;
+  transform: scale(1.18) rotate(12deg);
+}
+@keyframes modalPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@media (max-width: 535px) {
+  .modal-content {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    min-width: 180px;
+    font-size: 1.1rem;
+  }
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+  .modal-content p {
+    font-size: 1rem;
+  }
+}
