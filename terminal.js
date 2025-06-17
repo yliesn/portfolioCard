@@ -189,25 +189,32 @@ class WebTerminal {
                 this.printLine('Des easter eggs sont cachés dans le terminal... sauras-tu les trouver ?', false);
             },
             about: (args) => {
-                this.printLine("Je m'appelle Yliès Nejara, développeur web passionné par l'innovation, le design et la tech. Étudiant à CESI, basé à Chalon-sur-Saône.", false);
+                this.printLine("Je m'appelle Yliès Nejara, développeur full-stack passionné par la tech, l'innovation et les projets concrets. Étudiant en alternance au CESI, je suis basé à Chalon-sur-Saône. Je travaille sur des ERP comme Business Central et Sage X3, tout en développant des projets web modernes en freelance. Curieux, autonome et impliqué, je me forme continuellement sur les outils DevOps, le cloud, la cybersécurité et l'architecture logicielle.", false);
             },
             skills: (args) => {
-                if (args[0] === '--json') {
+                if (args[0] === '--json' || args[0] === '-j') {
                     this.printLine(JSON.stringify({
-                        frontend: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Vue'],
-                        backend: ['Node.js', 'PHP', 'Laravel'],
-                        tools: ['Git', 'Figma', 'VSCode'],
-                        learning: ['TypeScript', 'Docker']
+                        frontend: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Vue', 'Tailwind', 'Bootstrap', 'jQuery'],
+                        backend: ['PHP', 'Laravel', 'Node.js', 'Python', 'Java', 'C/C++', 'AL (Business Central)', 'Sage X3'],
+                        database: ['MySQL', 'PostgreSQL', 'SQLite', 'SQL Server'],
+                        tools: ['Git', 'VSCode', 'Figma', 'Docker', 'WSL', 'Linux', 'Vercel', 'Expo'],
+                        devOps: ['GitLab CI', 'Hostinger VPS', 'Nginx', 'Apache'],
+                        learning: ['TypeScript', 'Docker avancé', 'Symfony', 'C#', 'Unity/RA', 'Kubernetes'],
+                        softskills: ['Autonomie', 'Polyvalence', 'Persévérance', 'Sens client']
                     }, null, 2), false);
-                } else if (args[0] === '--verbose') {
+                } else if (args[0] === '--verbose' || args[0] === '-v') {
                     this.printLine('=== COMPÉTENCES DÉTAILLÉES ===', false);
-                    this.printLine('Frontend: HTML5, CSS3, JavaScript ES6+', false);
-                    this.printLine('- Frameworks: React, Vue.js, Nuxt', false);
-                    this.printLine('- Styling: Tailwind, SCSS, CSS Grid/Flexbox', false);
-                    this.printLine('Backend: Node.js, PHP, Laravel', false);
-                    this.printLine('Outils: Git, Figma, VSCode, Linux', false);
+                    this.printLine('Frontend : HTML5, CSS3, JavaScript ES6+, Tailwind, Bootstrap', false);
+                    this.printLine('- Frameworks JS : React, Vue.js, jQuery, Expo', false);
+                    this.printLine('- UI : Responsive, CSS Grid/Flexbox, Figma', false);
+                    this.printLine('Backend : PHP (POO, MVC), Laravel, Node.js, Python, Java, C/C++', false);
+                    this.printLine('- CMS & ERP : Business Central (AL), Sage X3', false);
+                    this.printLine('Base de données : MySQL, PostgreSQL, SQLite, SQL Server', false);
+                    this.printLine('DevOps : Git, GitLab CI/CD, Docker, WSL, Linux (Ubuntu), Nginx, Apache', false);
+                    this.printLine('Outils : VSCode, Postman, Vercel, Hostinger VPS, Unity', false);
+                    this.printLine('En cours d’apprentissage : Symfony, TypeScript, C#, Kubernetes', false);
                 } else {
-                    this.printLine('JavaScript • HTML5 • CSS3 • React • Vue • PHP • Laravel', false);
+                    this.printLine('Full-stack : PHP • Laravel • JavaScript • React • Vue • Node.js • Docker • SQL • C++ • Business Central', false);
                     this.printLine('Try: skills --json or skills --verbose', false);
                 }
             },
@@ -222,11 +229,11 @@ class WebTerminal {
                 this.printLine('Contact :', false);
                 this.printLine('Email : yliès.nejara@gmail.com', false);
                 this.printLine('LinkedIn : linkedin.com/in/yliès-nejara', false);
-                this.printLine('Discord : yliès#1234', false);
+                this.printLine('Discord : yliesn', false);
             },
             cv: (args) => {
                 this.printLine('Téléchargement du CV...', false);
-                window.open('cv.pdf', '_blank');
+                window.open('./public/cv.pdf', '_blank');
             },
             ls: (args) => {
                 this.printLine('index.html  snake.js  terminal.js  style.css  ...', false);
@@ -358,6 +365,100 @@ class WebTerminal {
                     this.printLine('Thème non reconnu', false);
                 }
             },
+            ascii: () => {
+                const art = [
+                    " __      __ __       ______ ________  ______  ",
+                    "|  \\    /  |  \\     |      |        \\/      \\ ",
+                    " \\$$\\  /  $| $$      \\$$$$$| $$$$$$$|  $$$$$$\\",
+                    "  \\$$\\/  $$| $$       | $$ | $$__   | $$___\\$$",
+                    "   \\$$  $$ | $$       | $$ | $$  \\   \\$$    \\ ",
+                    "    \\$$$$  | $$       | $$ | $$$$$   _\\$$$$$$\\",
+                    "    | $$   | $$_____ _| $$_| $$_____|  \\__| $$",
+                    "    | $$   | $$     |   $$ | $$     \\\\$$    $$",
+                    "     \\$$    \\$$$$$$$$\\$$$$$$\\$$$$$$$$ \\$$$$$$ ",
+                    "                                              ",
+                    "                                              "
+                ];
+                art.forEach(line => this.printLine(line, false));
+            },
+            ping: (args) => {
+                const defaultTarget = 'portfolio.local';
+                let target = defaultTarget;
+                let count = 4;
+                let baseTime = 0.3;
+
+                // Lire les arguments
+                args.forEach((arg, i) => {
+                    if (arg === '-c' && args[i + 1]) {
+                        const val = parseInt(args[i + 1]);
+                        if (!isNaN(val)) count = val;
+                    } else if (arg === '-t' && args[i + 1]) {
+                        const val = parseFloat(args[i + 1]);
+                        if (!isNaN(val)) baseTime = val;
+                    } else if (!arg.startsWith('-')) {
+                        target = arg;
+                    }
+                });
+
+                this.printLine(`PING ${target} (127.0.0.1) 56 bytes of data.`, false);
+
+                const times = [];
+                let received = 0;
+                if (count>20)
+                {
+                    count=20;
+                    this.printLine("nb de ping superieur a 20... ", true)
+                }
+
+                for (let i = 1; i <= count; i++) {
+                    setTimeout(() => {
+                        const lost = Math.random() < 0.1; // ~10% chance de perte
+                        const time = (baseTime + Math.random() * 0.3).toFixed(2); // variation
+                        if (!lost) {
+                            times.push(parseFloat(time));
+                            received++;
+                            this.printLine(`64 bytes from 127.0.0.1: icmp_seq=${i} ttl=64 time=${time} ms`, false);
+                        } else {
+                            this.printLine(`Request timeout for icmp_seq ${i}`, false);
+                        }
+                    }, i * 400);
+                }
+
+                // Statistiques finales
+                setTimeout(() => {
+                    this.printLine(`--- ${target} ping statistics ---`, false);
+                    this.printLine(`${count} packets transmitted, ${received} received, ${((1 - received / count) * 100).toFixed(0)}% packet loss`, false);
+
+                    if (times.length > 0) {
+                        const min = Math.min(...times).toFixed(2);
+                        const max = Math.max(...times).toFixed(2);
+                        const avg = (times.reduce((a, b) => a + b, 0) / times.length).toFixed(2);
+                        const mdev = (Math.sqrt(times.map(t => Math.pow(t - avg, 2)).reduce((a, b) => a + b, 0) / times.length)).toFixed(2);
+                        this.printLine(`rtt min/avg/max/mdev = ${min}/${avg}/${max}/${mdev} ms`, false);
+                    }
+                }, (count + 1) * 400);
+            },
+            timer: (args) => {
+                const duration = parseInt(args[0]);
+                if (isNaN(duration) || duration <= 0) {
+                    this.printLine("Usage : timer [secondes]  → Exemple : timer 5", false);
+                    return;
+                }
+
+                this.printLine(`Minuteur lancé pour ${duration} seconde(s)...`, false);
+                let remaining = duration;
+
+                const interval = setInterval(() => {
+                    if (remaining > 0) {
+                        this.printLine(`${remaining} seconde(s) restantes`, false);
+                        remaining--;
+                    } else {
+                        clearInterval(interval);
+                        this.printLine("Temps écoulé.", false);
+                    }
+                }, 1000);
+            }
+
         };
     }
 }
