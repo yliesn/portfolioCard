@@ -6,10 +6,14 @@ let mapIframe;
 let picOpen = false;
 let mapOpen = false;
 const sentence = [
-    "[A young french developer]", 
-    "[HTML, CSS, JS, PHP]",
-    "[C, C++, Java]",
-    "[React, Laravel]"
+    "[A young French developer]",
+    "[HTML, CSS, JS, PHP, SQL, AL]",
+    "[C, C++, Java, Python]",
+    "[React, Laravel, Symfony, Node.js]",
+    "[Business Central, Sage X3, ERP integration]",
+    "[Docker, WSL, Git]",
+    "[SaaS, Full-Stack Projects]",
+    "[Master's student in Software Architecture at CESI]"
 ];
 let indexSentence = 0;
 let animationDuration = 8000;

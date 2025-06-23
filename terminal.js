@@ -173,18 +173,25 @@ class WebTerminal {
                 this.printLine('projects    : Quelques projets réalisés', false);
                 this.printLine('contact     : Mes infos de contact', false);
                 this.printLine('cv          : Ouvre mon CV PDF', false);
-                this.printLine('ls          : Liste des fichiers fictifs', false);
-                this.printLine('pwd         : Affiche le chemin courant', false);
-                this.printLine('clear       : Nettoie le terminal', false);
-                this.printLine('date        : Affiche la date et l\'heure', false);
-                this.printLine('whoami      : Affiche le nom d\'utilisateur', false);
                 this.printLine('github      : Lien vers mon GitHub', false);
                 this.printLine('linkedin    : Lien vers mon LinkedIn', false);
                 this.printLine('discord     : Lien ou pseudo Discord', false);
                 this.printLine('email       : Affiche mon email', false);
                 this.printLine('random      : Affiche une citation inspirante', false);
-                this.printLine('banner      : Affiche une bannière', false);
-                this.printLine('echo        : Répète ce que vous tapez', false);
+                this.printLine('banner      : Affiche une bannière ASCII', false);
+                this.printLine('ascii       : Affiche un ASCII art personnalisé', false);
+                this.printLine('echo [txt]  : Répète le texte', false);
+                this.printLine('clear       : Nettoie le terminal', false);
+                this.printLine('ls          : Liste des fichiers fictifs', false);
+                this.printLine('pwd         : Affiche le chemin courant', false);
+                this.printLine('date        : Affiche la date et l\'heure actuelles', false);
+                this.printLine('whoami      : Affiche le nom d\'utilisateur', false);
+                this.printLine('ping [host] : Simule un ping réseau (ex: ping -c 3)', false);
+                this.printLine('timer [sec] : Lance un minuteur (ex: timer 10)', false);
+                this.printLine('theme [t]   : Change le thème (matrix, retro, cyberpunk...)', false);
+                this.printLine('snake       : Lance un mini-jeu Snake', false);
+                this.printLine('coffee      : Affiche une tasse de café (productivité +50%)', false);
+                this.printLine('vim         : Simule une session Vim (ne paniquez pas)', false);
                 this.printLine('---', false);
                 this.printLine('Des easter eggs sont cachés dans le terminal... sauras-tu les trouver ?', false);
             },
@@ -257,18 +264,18 @@ class WebTerminal {
             },
             linkedin: (args) => {
                 this.printLine('Accédez à mon LinkedIn :', false);
-                this.printLine('https://linkedin.com/in/yliès-nejara', false);
-                window.open('https://linkedin.com/in/yliès-nejara', '_blank');
+                this.printLine('https://www.linkedin.com/in/ylies-nejara-07b9792a7/', false);
+                window.open('https://www.linkedin.com/in/ylies-nejara-07b9792a7/', '_blank');
             },
             discord: (args) => {
                 this.printLine('Rejoignez mon serveur Discord :', false);
-                this.printLine('https://discord.gg/monserveur', false);
-                window.open('https://discord.gg/monserveur', '_blank');
+                this.printLine('Yliesn', false);
+                // window.open('https://discord.gg/monserveur', '_blank');
             },
             email: (args) => {
                 this.printLine('Mon adresse email :', false);
-                this.printLine('yliès.nejara@gmail.com', false);
-                window.open('mailto:yliès.nejara@gmail.com', '_blank');
+                this.printLine('yliesnejara@gmail.com', false);
+                window.open('mailto:yliesnejara@gmail.com', '_blank');
             },
             random: (args) => {
                 const quotes = [
