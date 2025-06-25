@@ -235,7 +235,7 @@ class WebTerminal {
             contact: (args) => {
                 this.printLine('Contact :', false);
                 this.printLine('Email : yliès.nejara@gmail.com', false);
-                this.printLine('LinkedIn : linkedin.com/in/yliès-nejara', false);
+                this.printLine('LinkedIn : linkedin.com/in/ylies-nejara', false);
                 this.printLine('Discord : yliesn', false);
             },
             cv: (args) => {
@@ -264,8 +264,8 @@ class WebTerminal {
             },
             linkedin: (args) => {
                 this.printLine('Accédez à mon LinkedIn :', false);
-                this.printLine('https://www.linkedin.com/in/ylies-nejara-07b9792a7/', false);
-                window.open('https://www.linkedin.com/in/ylies-nejara-07b9792a7/', '_blank');
+                this.printLine('www.linkedin.com/in/ylies-nejara', false);
+                window.open('www.linkedin.com/in/ylies-nejara', '_blank');
             },
             discord: (args) => {
                 this.printLine('Rejoignez mon serveur Discord :', false);
