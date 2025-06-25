@@ -264,8 +264,8 @@ class WebTerminal {
             },
             linkedin: (args) => {
                 this.printLine('Accédez à mon LinkedIn :', false);
-                this.printLine('www.linkedin.com/in/ylies-nejara', false);
-                window.open('www.linkedin.com/in/ylies-nejara', '_blank');
+                this.printLine('https://www.linkedin.com/in/ylies-nejara', false);
+                window.open('https://www.linkedin.com/in/ylies-nejara', '_blank');
             },
             discord: (args) => {
                 this.printLine('Rejoignez mon serveur Discord :', false);
